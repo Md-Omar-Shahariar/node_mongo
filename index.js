@@ -1,6 +1,7 @@
 var http = require("http");
 const _ = require("underscore");
 const url = require("url");
+const fs = require("fs");
 // const arr = [
 //   { name: "afridi", roll: "1" },
 //   { name: "afridi1", roll: "1" },
@@ -13,10 +14,26 @@ const add = require("./other");
 // console.log(http);
 
 var server = http.createServer((req, res) => {
-  const address_url = `http://localhost:4000/contact?name=afridi&&roll=1`;
-  const parse_url = url.parse(address_url);
+  //File System
+  if (req.url === "/") {
+    fs.readFile("data.txt", "utf-8", (err, data) => {
+      if (err) {
+        console.log("Error");
+        res.end();
+      } else {
+        const newData = [data, "Md. omar"];
+        res.write(data);
+        console.log(data);
+        console.log(newData);
+        res.end();
+      }
+    });
+  }
 
-  console.log(parse_url.query);
+  //   const address_url = `http://localhost:4000/contact?name=afridi&&roll=1`;
+  //   const parse_url = url.parse(address_url);
+
+  //   console.log(parse_url.query);
 
   //write code here
   //   console.log(`Server is running`);
