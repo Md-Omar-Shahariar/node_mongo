@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "dependencies": {
+    "node": "^16.17.0",
+    "nodemon": "^2.0.19",
+    "underscore": "^1.13.4"
+  }
+}
